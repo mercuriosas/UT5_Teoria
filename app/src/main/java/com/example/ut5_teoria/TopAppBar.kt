@@ -60,7 +60,8 @@ fun MyTopAppBarCenter() {
         },
         navigationIcon = {
             IconButton(onClick = {
-                Toast.makeText(contextForToast, "Nav Icon Click", Toast.LENGTH_SHORT).show()
+                //MyDrawerState.open()
+                //Toast.makeText(contextForToast, "Nav Icon Click", Toast.LENGTH_SHORT).show()
             }) {
                 Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
             }
@@ -122,7 +123,7 @@ fun MyTopAppBarLarge() {
         },
         navigationIcon = {
             IconButton(onClick = {
-                Toast.makeText(contextForToast, "Nav Icon Click", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(contextForToast, "Nav Icon Click", Toast.LENGTH_SHORT).show()
             }) {
                 Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
             }
