@@ -27,6 +27,7 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
@@ -63,11 +64,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //Greeting("Android")
                     CustomScaffold()
-                    //MyTopAppBarMedium()
-                    //MyTopAppBarLarge()
-                    //MyTopAppBar()
                 }
             }
         }
@@ -112,7 +109,13 @@ fun CustomScaffold() {
         bottomBar = { MyBottomAppBar() },
 
         // Botón flotante personalizado
-        floatingActionButton = { },
+        floatingActionButton = {
+            MyFAB()
+            //MySmallFAB()
+            //MyLargeFAB()
+            //MyExtendedFAB()
+        },
+        floatingActionButtonPosition = FabPosition.Center,
 
         //Snackbar
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
@@ -135,155 +138,4 @@ fun CustomScaffold() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyTopAppBarSmall() {
-    TopAppBar(
-        // Título de la barra superior
-        title = {
 
-            Text(text = "TopAppBar")
-        },
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        )
-    )
-}
-
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyTopAppBarCenter() {
-    val contextForToast = LocalContext.current.applicationContext
-    CenterAlignedTopAppBar(// Título de la barra superior
-        title = {
-            Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
-                Image(
-                    painter = painterResource(id = R.drawable.dragonball),
-                    contentDescription = "Dragon Ball",
-                    Modifier.size(100.dp)
-                )
-                Text(text = "TopAppBar")
-            }
-        },
-        navigationIcon = {
-            IconButton(onClick = {
-                Toast.makeText(contextForToast, "Nav Icon Click", Toast.LENGTH_SHORT).show()
-            }) {
-                Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
-            }
-        },
-        actions = {
-            IconButton(onClick = {
-                Toast.makeText(contextForToast, "Add Click", Toast.LENGTH_SHORT).show()
-            }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add Items")
-            }
-        },
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        )
-    )
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyTopAppBarMedium() {
-    val contextForToast = LocalContext.current.applicationContext
-    MediumTopAppBar(// Título de la barra superior
-        title = {
-
-            Text(text = "TopAppBar")
-        },
-        navigationIcon = {
-            IconButton(onClick = {
-                Toast.makeText(contextForToast, "Nav Icon Click", Toast.LENGTH_SHORT).show()
-            }) {
-                Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
-            }
-        },
-        actions = {
-            IconButton(onClick = {
-                Toast.makeText(contextForToast, "Add Click", Toast.LENGTH_SHORT).show()
-            }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add Items")
-            }
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Filled.Favorite, contentDescription = "Favorito")
-            }
-        },
-        colors = TopAppBarDefaults.mediumTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        )
-    )
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyTopAppBarLarge() {
-    val contextForToast = LocalContext.current.applicationContext
-    LargeTopAppBar(
-        // Título de la barra superior
-        title = {
-
-            Text(text = "TopAppBar")
-        },
-        navigationIcon = {
-            IconButton(onClick = {
-                Toast.makeText(contextForToast, "Nav Icon Click", Toast.LENGTH_SHORT).show()
-            }) {
-                Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu")
-            }
-        },
-        actions = {
-            IconButton(onClick = {
-                Toast.makeText(contextForToast, "Add Click", Toast.LENGTH_SHORT).show()
-            }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add Items")
-            }
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Filled.Favorite, contentDescription = "Favorito")
-            }
-        },
-        colors = TopAppBarDefaults.largeTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        )
-    )
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyBottomAppBar() {
-    BottomAppBar(
-        actions = {
-            IconButton(onClick = { /* do something */ }) {
-                Icon(imageVector = Icons.Default.Home, contentDescription = "Localized description")
-            }
-            IconButton(onClick = { /* do something */ }) {
-                Icon(
-                    imageVector = Icons.Default.PlayArrow,
-                    contentDescription = "Localized description",
-                )
-            }
-            IconButton(onClick = { /* do something */ }) {
-                Icon(
-                    Icons.Filled.Email,
-                    contentDescription = "Localized description",
-                )
-            }
-            IconButton(onClick = { /* do something */ }) {
-                Icon(
-                    Icons.Filled.Person,
-                    contentDescription = "Localized description",
-                )
-            }
-            IconButton(onClick = { /* do something */ }) {
-                Icon(
-                    Icons.Filled.Settings,
-                    contentDescription = "Localized description",
-                )
-            }
-        },
-        containerColor = Color.Red
-    )
-}
